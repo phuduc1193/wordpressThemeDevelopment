@@ -1,0 +1,37 @@
+.h2, h2 {
+    font-size: 1.2rem;
+}
+
+.nazar-settings {
+    display: inline-block;
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.nazar-review {
+    display: inline-block;
+    float: right;
+    width: 35%;
+    height: 700px;
+    margin-top: 100px;
+    margin-right: 50px;
+    border: 2px solid #000;
+    background: #cacaca;
+}
+
+.sidebar {
+    display: inline-block;
+    float: right;
+    width: 400px;
+    height: 100%;
+    color: white;
+    border-left: 2px solid #5f5f5f;
+    background: #444444;
+    box-shadow: -5px 0px 15px #8f8f8f;
+}
+
+#profile-image {
+    margin-top: 20px;
+    padding: 20px 0px;
+}

@@ -90,16 +90,27 @@ function nazar_profile_linkedin()
 function nazar_theme_settings_page()
 {
     ?>
-  <h1>Nazar General Settings</h1>
-  <?php settings_errors(); ?>
-  <form action="options.php" method="post">
-    <?php settings_fields('nazar-settings-group', 'first-name'); ?>
-    <?php do_settings_sections('nazar_theme_general_settings'); ?>
-    <?php submit_button(); ?>
-  </form>
+  <div class="nazar-settings wrap">
+    <h1>Nazar General Settings</h1>
+    <?php settings_errors(); ?>
+    <form action="options.php" method="post">
+      <?php settings_fields('nazar-settings-group', 'first-name'); ?>
+      <?php do_settings_sections('nazar_theme_general_settings'); ?>
+      <?php submit_button(); ?>
+    </form>
+  </div>
+  <div class="nazar-review">
+    <div class="sidebar text-center">
+      <img id="profile-image" src="" height="170px" width="170px">
+      <h2 id="profile-name"></h2>
+      <p id="profile-description"></p>
+      <div id="profile-socials"></div>
+    </div>
+  </div>
 <?php
 
 }
+
 function nazar_theme_custom_css_page()
 {
     echo '<h1>Nazar Custom CSS</h1>';
