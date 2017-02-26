@@ -52,13 +52,54 @@ function nazar_custom_settings()
     add_settings_field('post-formats', 'Post Formats', 'nazar_post_formats', 'nazar_theme_support_options', 'nazar-theme-options');
     add_settings_field('custom-header', 'Custom Header', 'nazar_custom_header', 'nazar_theme_support_options', 'nazar-theme-options');
     add_settings_field('custom-background', 'Custom Background', 'nazar_custom_background', 'nazar_theme_support_options', 'nazar-theme-options');
+
+    // Contact From Options
+    register_setting('nazar-theme-support', 'activate_contact_form');
+    add_settings_section('nazar-contact-section', '<hr>Contact Form', 'nazar_contact_section', 'nazar_theme_support_options');
+    add_settings_field('activate-form', 'Contact Form', 'nazar_contact_form', 'nazar_theme_support_options', 'nazar-contact-section');
 }
 
-// Display custom fields
+// General Page
+function nazar_general_settings_page()
+{
+    ?>
+<div class="wrap">
+  <h1>Nazar General Settings</h1>
+</div>
+<?php
+
+}
+
+// Profile Sidebar page
+function nazar_profile_settings_page()
+{
+    ?>
+<div class="nazar-settings wrap">
+  <h1>Nazar Profile Settings</h1>
+  <?php settings_errors(); ?>
+  <form class="nazar-general-form" action="options.php" method="post">
+    <?php settings_fields('nazar-settings-group', 'first-name'); ?>
+    <?php do_settings_sections('nazar_theme_general_settings'); ?>
+    <?php submit_button('Save Changes', 'primary', 'btnSubmit'); ?>
+  </form>
+</div>
+<div class="nazar-review">
+  <div class="sidebar text-center">
+    <img id="profile-picture" src="<?php print esc_attr(get_option('profile_picture')); ?>" height="170px" width="170px">
+    <h2 id="profile-name"></h2>
+    <p id="profile-description"></p>
+    <div id="profile-socials"></div>
+  </div>
+</div>
+<?php
+
+}
+
 function nazar_profile_options()
 {
     echo 'Customize your Profile Information';
 }
+
 function nazar_profile_name()
 {
     $firstName = esc_attr(get_option('profile_first_name'));
@@ -111,37 +152,28 @@ function nazar_profile_linkedin()
     echo '<input type="text" name="profile_linkedin" value="'. $socialLinkedIn .'" placeholder="LinkedIn Link" />';
 }
 
-// General Page
-function nazar_general_settings_page()
-{
-}
-
-// Present settings page
-function nazar_profile_settings_page()
+// Theme Support Page
+function nazar_theme_support_page()
 {
     ?>
-<div class="nazar-settings wrap">
-  <h1>Nazar Profile Settings</h1>
+<div class="wrap">
+  <h1>Nazar Theme Support</h1>
   <?php settings_errors(); ?>
   <form class="nazar-general-form" action="options.php" method="post">
-    <?php settings_fields('nazar-settings-group', 'first-name'); ?>
-    <?php do_settings_sections('nazar_theme_general_settings'); ?>
-    <?php submit_button('Save Changes', 'primary', 'btnSubmit'); ?>
+    <?php settings_fields('nazar-theme-support'); ?>
+    <?php do_settings_sections('nazar_theme_support_options'); ?>
+    <?php submit_button(); ?>
   </form>
-</div>
-<div class="nazar-review">
-  <div class="sidebar text-center">
-    <img id="profile-picture" src="<?php print esc_attr(get_option('profile_picture')); ?>" height="170px" width="170px">
-    <h2 id="profile-name"></h2>
-    <p id="profile-description"></p>
-    <div id="profile-socials"></div>
-  </div>
 </div>
 <?php
 
 }
 
-// Theme Support Page
+function nazar_theme_options()
+{
+    echo 'Activate or Deactivate specific Theme Support Options';
+}
+
 function nazar_post_formats()
 {
     $options = get_option('post_formats');
@@ -162,29 +194,26 @@ function nazar_custom_header()
 }
 function nazar_custom_background()
 {
-  $option = get_option('custom_background');
-  $checked = (@$option == 1 ? 'checked' : '');
-  $output = '<label><input type="checkbox" id="custom_background" name="custom_background" value="1" '.$checked.'/> Activate the Custom Background</label><br/>';
-  echo $output;
-}
-function nazar_theme_options()
-{
-    echo 'Activate or Deactivate specific Theme Support Options';
-}
-function nazar_theme_support_page()
-{
-    ?>
-<h1>Nazar Theme Support</h1>
-<?php settings_errors(); ?>
-<form class="nazar-general-form" action="options.php" method="post">
-  <?php settings_fields('nazar-theme-support'); ?>
-  <?php do_settings_sections('nazar_theme_support_options'); ?>
-  <?php submit_button(); ?>
-</form>
-<?php
-
+    $option = get_option('custom_background');
+    $checked = (@$option == 1 ? 'checked' : '');
+    $output = '<label><input type="checkbox" id="custom_background" name="custom_background" value="1" '.$checked.'/> Activate the Custom Background</label><br/>';
+    echo $output;
 }
 
+function nazar_contact_section()
+{
+    echo 'Built-in Contact Form Support';
+}
+
+function nazar_contact_form()
+{
+    $option = get_option('activate_contact_form');
+    $checked = (@$option == 1 ? 'checked' : '');
+    $output = '<label><input type="checkbox" id="activate_contact_form" name="activate_contact_form" value="1" '.$checked.'/> Activate</label><br/>';
+    echo $output;
+}
+
+// Custom CSS page
 function nazar_theme_custom_css_page()
 {
     ?>
