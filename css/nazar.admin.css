@@ -39,9 +39,8 @@
 
 #profile-picture {
     margin: 20px 0;
-    padding: 20px 0px;
     border-radius: 50%;
-    border: 2px solid black;
+    border: 1px solid #666;
 }
 
 .profile-social-icon {

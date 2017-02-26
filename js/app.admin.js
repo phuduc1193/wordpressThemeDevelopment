@@ -17,7 +17,7 @@ jQuery(document).ready(function() {
 
         mediaUploader.on('select', function () {
           attachment = mediaUploader.state().get('selection').first().toJSON();
-          jQuery('#profile_picture').val(attachment.url);
+          jQuery('#profile_picture').val(attachment.url).trigger('change');
         });
 
         mediaUploader.open();
@@ -44,7 +44,7 @@ function previewValue() {
     var lastName = jQuery("input[name='profile_last_name']").val();
     var name = firstName + ' ' + lastName;
     var description = jQuery("textarea[name='profile_description']").val();
-    var picture = jQuery("#profile_picture").val();
+    var pictureLink = jQuery("#profile_picture").val();
     var twitter = jQuery("input[name='profile_twitter']").val();
     var instagram = jQuery("input[name='profile_instagram']").val();
     var facebook = jQuery("input[name='profile_facebook']").val();
@@ -52,7 +52,7 @@ function previewValue() {
     var github = jQuery("input[name='profile_github']").val();
     var linkedin = jQuery("input[name='profile_linkedin']").val();
 
-    jQuery("#profile-picture").attr('src', picture);
+    jQuery("#profile-picture").attr('src', pictureLink);
     jQuery("#profile-name").html(name);
     jQuery("#profile-description").html(description);
     if (twitter !== '') {

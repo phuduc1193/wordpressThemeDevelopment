@@ -41,7 +41,7 @@ function nazar_profile_settings()
     add_settings_field('profile-linkedin', 'LinkedIn', 'nazar_profile_linkedin', 'nazar_theme_general_settings', 'nazar-profile-options');
 }
 
-// Custom fields for profile
+// Display custom fields
 function nazar_profile_options()
 {
     echo 'Customize your Profile Information';
@@ -94,6 +94,7 @@ function nazar_profile_linkedin()
     echo '<input type="text" name="profile_linkedin" value="'. $socialLinkedIn .'" placeholder="LinkedIn Link" />';
 }
 
+// Present settings page
 function nazar_theme_settings_page()
 {
     ?>
@@ -120,5 +121,10 @@ function nazar_theme_settings_page()
 
 function nazar_theme_custom_css_page()
 {
-    echo '<h1>Nazar Custom CSS</h1>';
+    ?>
+  <div class="wrap">
+    <h1>Nazar Custom CSS</h1>
+  </div>
+<?php
+
 }
