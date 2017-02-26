@@ -32,4 +32,6 @@ if (@$contact == 1) {
     add_action('init', 'nazar_contact_custom_post_type');
     add_filter('manage_nazar-contact_posts_columns', 'nazar_set_contact_columns');
     add_action('manage_nazar-contact_posts_custom_column', 'nazar_contact_custom_column', 10, 2);
+    add_action('add_meta_boxes', 'nazar_add_contact_meta_box');
+    add_action('save_post', 'nazar_save_contact_email_data');
 }
