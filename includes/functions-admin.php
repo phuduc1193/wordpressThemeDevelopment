@@ -11,8 +11,7 @@ function nazar_add_admin_settings()
     add_menu_page('Nazar Theme Options', 'Theme Options', 'manage_options', 'nazar_theme_general_settings', 'nazar_general_settings_page', '', 63);
     add_submenu_page('nazar_theme_general_settings', 'Nazar Theme Options', 'General', 'manage_options', 'nazar_theme_general_settings', 'nazar_general_settings_page');
     add_submenu_page('nazar_theme_general_settings', 'Nazar Profile Options', 'Profile Sidebar', 'manage_options', 'nazar_theme_profile_settings', 'nazar_profile_settings_page');
-    add_submenu_page('nazar_theme_general_settings', 'Nazar Theme Options', 'Theme Options', 'manage_options', 'nazar_theme_support_options', 'nazar_theme_support_page');
-    add_submenu_page('nazar_theme_general_settings', 'Nazar CSS Options', 'Custom CSS', 'manage_options', 'nazar_theme_css', 'nazar_theme_custom_css_page');
+    add_submenu_page('nazar_theme_general_settings', 'Nazar Support Options', 'Theme Support', 'manage_options', 'nazar_theme_support_options', 'nazar_theme_support_page');
 
     add_action('admin_init', 'nazar_custom_settings');
 }
@@ -20,6 +19,7 @@ add_action('admin_menu', 'nazar_add_admin_settings');
 
 function nazar_custom_settings()
 {
+    // Sidebar Profile Settings
     register_setting('nazar-settings-group', 'profile_picture');
     register_setting('nazar-settings-group', 'profile_first_name');
     register_setting('nazar-settings-group', 'profile_last_name');
@@ -211,15 +211,4 @@ function nazar_contact_form()
     $checked = (@$option == 1 ? 'checked' : '');
     $output = '<label><input type="checkbox" id="activate_contact_form" name="activate_contact_form" value="1" '.$checked.'/> Activate</label><br/>';
     echo $output;
-}
-
-// Custom CSS page
-function nazar_theme_custom_css_page()
-{
-    ?>
-<div class="wrap">
-  <h1>Nazar Custom CSS</h1>
-</div>
-<?php
-
 }
