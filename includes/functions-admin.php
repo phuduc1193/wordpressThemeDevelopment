@@ -34,7 +34,7 @@ function nazar_profile_settings()
     add_settings_field('profile-twitter', 'Twitter', 'nazar_profile_twitter', 'nazar_theme_general_settings', 'nazar-profile-options');
     add_settings_field('profile-instagram', 'Instagram', 'nazar_profile_instagram', 'nazar_theme_general_settings', 'nazar-profile-options');
     add_settings_field('profile-facebook', 'Facebook', 'nazar_profile_facebook', 'nazar_theme_general_settings', 'nazar-profile-options');
-    add_settings_field('profile-google', 'Google', 'nazar_profile_google', 'nazar_theme_general_settings', 'nazar-profile-options');
+    add_settings_field('profile-google', 'Google+', 'nazar_profile_google', 'nazar_theme_general_settings', 'nazar-profile-options');
     add_settings_field('profile-github', 'Github', 'nazar_profile_github', 'nazar_theme_general_settings', 'nazar-profile-options');
     add_settings_field('profile-linkedin', 'LinkedIn', 'nazar_profile_linkedin', 'nazar_theme_general_settings', 'nazar-profile-options');
 }
@@ -74,7 +74,7 @@ function nazar_profile_facebook()
 function nazar_profile_google()
 {
     $socialGoogle = esc_attr(get_option('profile_google'));
-    echo '<input type="text" name="profile_google" value="'. $socialGoogle .'" placeholder="Google Link" />';
+    echo '<input type="text" name="profile_google" value="'. $socialGoogle .'" placeholder="Google Plus Link" />';
 }
 function nazar_profile_github()
 {

@@ -30,32 +30,32 @@ function previewValue() {
   jQuery("#profile-description").html(description);
   if(twitter !== '') {
     jQuery("#profile-socials a i[class*='twitter']").parent().remove();
-    jQuery("#profile-socials").unbind().append('<a href=""><i class="fa fa-3x fa-twitter-square profile-social-icon"></i></a>');
+    jQuery("#profile-socials").unbind().append('<a href=""><span class="fa-stack fa-lg twitter-square social-icon"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-twitter fa-stack-1x profile-social-icon"></i></span></a>');
     jQuery("#profile-socials a i[class*='twitter']").parent().attr('href', twitter);
   } else jQuery("#profile-socials a i[class*='twitter']").parent().remove();
   if(instagram !== '') {
     jQuery("#profile-socials a i[class*='instagram']").parent().remove();
-    jQuery("#profile-socials").unbind().append('<a href=""><i class="fa fa-3x fa-instagram profile-social-icon"></i></a>');
+    jQuery("#profile-socials").unbind().append('<a href=""><span class="instagram-square social-icon"><i class="fa fa-instagram fa-2x profile-social-icon"></i></span></a>');
     jQuery("#profile-socials a i[class*='instagram']").parent().attr('href', instagram);
   } else jQuery("#profile-socials a i[class*='instagram']").parent().remove();
   if(facebook !== '') {
     jQuery("#profile-socials a i[class*='facebook']").parent().remove();
-    jQuery("#profile-socials").unbind().append('<a href=""><i class="fa fa-3x fa-facebook-square profile-social-icon"></i></a>');
+    jQuery("#profile-socials").unbind().append('<a href=""><span class="fa-stack fa-lg facebook-square social-icon"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x profile-social-icon"></i></span></a>');
     jQuery("#profile-socials a i[class*='facebook']").parent().attr('href', facebook);
   } else jQuery("#profile-socials a i[class*='facebook']").parent().remove();
   if(google !== '') {
     jQuery("#profile-socials a i[class*='google']").parent().remove();
-    jQuery("#profile-socials").unbind().append('<a href=""><i class="fa fa-3x fa-google-plus-square profile-social-icon"></i></a>');
+    jQuery("#profile-socials").unbind().append('<a href=""><span class="fa-stack fa-lg google-square social-icon"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-google-plus fa-stack-1x profile-social-icon"></i></span></a>');
     jQuery("#profile-socials a i[class*='google']").parent().attr('href', google);
   } else jQuery("#profile-socials a i[class*='google']").parent().remove();
   if(github !== '') {
     jQuery("#profile-socials a i[class*='github']").parent().remove();
-    jQuery("#profile-socials").unbind().append('<a href=""><i class="fa fa-3x fa-github-square profile-social-icon"></i></a>');
+    jQuery("#profile-socials").unbind().append('<a href=""><span class="fa-stack fa-lg github-square social-icon"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-github fa-stack-1x profile-social-icon"></i></span></a>');
     jQuery("#profile-socials a i[class*='github']").parent().attr('href', github);
   } else jQuery("#profile-socials a i[class*='github']").parent().remove();
   if(linkedin !== '') {
     jQuery("#profile-socials a i[class*='linkedin']").parent().remove();
-    jQuery("#profile-socials").unbind().append('<a href=""><i class="fa fa-3x fa-linkedin-square profile-social-icon"></i></a>');
+    jQuery("#profile-socials").unbind().append('<a href=""><span class="fa-stack fa-lg linkedin-square social-icon"><i class="fa fa-square fa-stack-2x"></i><i class="fa fa-linkedin fa-stack-1x profile-social-icon"></i></span></a>');
     jQuery("#profile-socials a i[class*='linkedin']").parent().attr('href', linkedin);
   } else jQuery("#profile-socials a i[class*='linkedin']").parent().remove();
 }
