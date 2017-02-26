@@ -18,6 +18,7 @@ add_action('admin_menu', 'nazar_add_admin_settings');
 
 function nazar_profile_settings()
 {
+    register_setting('nazar-settings-group', 'profile_picture');
     register_setting('nazar-settings-group', 'profile_first_name');
     register_setting('nazar-settings-group', 'profile_last_name');
     register_setting('nazar-settings-group', 'profile_description');
@@ -31,6 +32,7 @@ function nazar_profile_settings()
     add_settings_section('nazar-profile-options', 'Profile Options', 'nazar_profile_options', 'nazar_theme_general_settings');
     add_settings_field('profile-first-name', 'Full Name', 'nazar_profile_name', 'nazar_theme_general_settings', 'nazar-profile-options');
     add_settings_field('profile-description', 'Description', 'nazar_profile_description', 'nazar_theme_general_settings', 'nazar-profile-options');
+    add_settings_field('profile-picture', 'Profile picture', 'nazar_profile_picture', 'nazar_theme_general_settings', 'nazar-profile-options');
     add_settings_field('profile-twitter', 'Twitter', 'nazar_profile_twitter', 'nazar_theme_general_settings', 'nazar-profile-options');
     add_settings_field('profile-instagram', 'Instagram', 'nazar_profile_instagram', 'nazar_theme_general_settings', 'nazar-profile-options');
     add_settings_field('profile-facebook', 'Facebook', 'nazar_profile_facebook', 'nazar_theme_general_settings', 'nazar-profile-options');
@@ -55,6 +57,11 @@ function nazar_profile_description()
     $profileDescription = esc_attr(get_option('profile_description'));
     echo '<textarea name="profile_description" class="" cols="50" rows="4">' . $profileDescription  . '</textarea>';
     echo '<p class="description">Write something about yourself</p>';
+}
+function nazar_profile_picture()
+{
+    $profilePicture = esc_attr(get_option('profile_picture'));
+    echo '<input type="button" id="upload-media" class="button button-secondary" value="Upload Profile Picture" /><input type="hidden" id="profile_picture" name="profile_picture" value="'. $profilePicture .'"/>';
 }
 function nazar_profile_twitter()
 {
@@ -101,7 +108,7 @@ function nazar_theme_settings_page()
   </div>
   <div class="nazar-review">
     <div class="sidebar text-center">
-      <img id="profile-image" src="" height="170px" width="170px">
+      <img id="profile-picture" src="<?php print esc_attr(get_option('profile_picture')); ?>" height="170px" width="170px">
       <h2 id="profile-name"></h2>
       <p id="profile-description"></p>
       <div id="profile-socials"></div>
