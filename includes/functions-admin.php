@@ -8,15 +8,17 @@
 
 function nazar_add_admin_settings()
 {
-    add_menu_page('Nazar Theme Options', 'Theme Options', 'manage_options', 'nazar_theme_general_settings', 'nazar_theme_settings_page', '', 63);
-    add_submenu_page('nazar_theme_general_settings', 'Nazar Theme Options', 'General', 'manage_options', 'nazar_theme_general_settings', 'nazar_theme_settings_page');
-    add_submenu_page('nazar_theme_general_settings', 'Nazar CSS Options', 'Custom CSS', 'manage_options', 'nazar-theme-css', 'nazar_theme_custom_css_page');
+    add_menu_page('Nazar Theme Options', 'Theme Options', 'manage_options', 'nazar_theme_general_settings', 'nazar_general_settings_page', '', 63);
+    add_submenu_page('nazar_theme_general_settings', 'Nazar Theme Options', 'General', 'manage_options', 'nazar_theme_general_settings', 'nazar_general_settings_page');
+    add_submenu_page('nazar_theme_general_settings', 'Nazar Profile Options', 'Profile Sidebar', 'manage_options', 'nazar_theme_profile_settings', 'nazar_profile_settings_page');
+    add_submenu_page('nazar_theme_general_settings', 'Nazar Theme Options', 'Theme Options', 'manage_options', 'nazar_theme_support_options', 'nazar_theme_support_page');
+    add_submenu_page('nazar_theme_general_settings', 'Nazar CSS Options', 'Custom CSS', 'manage_options', 'nazar_theme_css', 'nazar_theme_custom_css_page');
 
-    add_action('admin_init', 'nazar_profile_settings');
+    add_action('admin_init', 'nazar_custom_settings');
 }
 add_action('admin_menu', 'nazar_add_admin_settings');
 
-function nazar_profile_settings()
+function nazar_custom_settings()
 {
     register_setting('nazar-settings-group', 'profile_picture');
     register_setting('nazar-settings-group', 'profile_first_name');
@@ -39,6 +41,13 @@ function nazar_profile_settings()
     add_settings_field('profile-google', 'Google+', 'nazar_profile_google', 'nazar_theme_general_settings', 'nazar-profile-options');
     add_settings_field('profile-github', 'Github', 'nazar_profile_github', 'nazar_theme_general_settings', 'nazar-profile-options');
     add_settings_field('profile-linkedin', 'LinkedIn', 'nazar_profile_linkedin', 'nazar_theme_general_settings', 'nazar-profile-options');
+
+    // Theme Support Options
+    register_setting('nazar-theme-support', 'post_formats', 'nazar_post_formats_callback');
+
+    add_settings_section('nazar-theme-options', 'Theme Options', 'nazar_theme_options', 'nazar_theme_support_options');
+
+    add_settings_field('post-formats', 'Post Formats', 'nazar_post_formats', 'nazar_theme_support_options', 'nazar-theme-options');
 }
 
 // Display custom fields
@@ -94,27 +103,67 @@ function nazar_profile_linkedin()
     echo '<input type="text" name="profile_linkedin" value="'. $socialLinkedIn .'" placeholder="LinkedIn Link" />';
 }
 
+// General Page
+function nazar_general_settings_page()
+{
+}
+
 // Present settings page
-function nazar_theme_settings_page()
+function nazar_profile_settings_page()
 {
     ?>
-  <div class="nazar-settings wrap">
-    <h1>Nazar General Settings</h1>
-    <?php settings_errors(); ?>
-    <form action="options.php" method="post">
-      <?php settings_fields('nazar-settings-group', 'first-name'); ?>
-      <?php do_settings_sections('nazar_theme_general_settings'); ?>
-      <?php submit_button(); ?>
-    </form>
+<div class="nazar-settings wrap">
+  <h1>Nazar Profile Settings</h1>
+  <?php settings_errors(); ?>
+  <form action="options.php" method="post">
+    <?php settings_fields('nazar-settings-group', 'first-name'); ?>
+    <?php do_settings_sections('nazar_theme_general_settings'); ?>
+    <?php submit_button(); ?>
+  </form>
+</div>
+<div class="nazar-review">
+  <div class="sidebar text-center">
+    <img id="profile-picture" src="<?php print esc_attr(get_option('profile_picture')); ?>" height="170px" width="170px">
+    <h2 id="profile-name"></h2>
+    <p id="profile-description"></p>
+    <div id="profile-socials"></div>
   </div>
-  <div class="nazar-review">
-    <div class="sidebar text-center">
-      <img id="profile-picture" src="<?php print esc_attr(get_option('profile_picture')); ?>" height="170px" width="170px">
-      <h2 id="profile-name"></h2>
-      <p id="profile-description"></p>
-      <div id="profile-socials"></div>
-    </div>
-  </div>
+</div>
+<?php
+
+}
+
+// Theme Support Page
+function nazar_post_formats_callback($input)
+{
+    return $input;
+}
+
+function nazar_post_formats()
+{
+    $options = get_option('post_formats');
+    $formats = array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat');
+    $output = '';
+    foreach ($formats as $format) {
+        $checked = (@$options[$format] == 1 ? 'checked' : '');
+        $output.= '<label><input type="checkbox" id="'.$format.'" name="post_formats['.$format.']" value="1" '.$checked.'/> '.$format.'</label><br/>';
+    }
+    echo $output;
+}
+function nazar_theme_options()
+{
+    echo 'Activate or Deactivate specific Theme Support Options';
+}
+function nazar_theme_support_page()
+{
+    ?>
+<h1>Nazar Theme Support</h1>
+<?php settings_errors(); ?>
+<form class="nazar-general-form" action="options.php" method="post">
+  <?php settings_fields('nazar-theme-support'); ?>
+  <?php do_settings_sections('nazar_theme_support_options'); ?>
+  <?php submit_button(); ?>
+</form>
 <?php
 
 }
@@ -122,9 +171,9 @@ function nazar_theme_settings_page()
 function nazar_theme_custom_css_page()
 {
     ?>
-  <div class="wrap">
-    <h1>Nazar Custom CSS</h1>
-  </div>
+<div class="wrap">
+  <h1>Nazar Custom CSS</h1>
+</div>
 <?php
 
 }
