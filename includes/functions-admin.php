@@ -43,11 +43,15 @@ function nazar_custom_settings()
     add_settings_field('profile-linkedin', 'LinkedIn', 'nazar_profile_linkedin', 'nazar_theme_general_settings', 'nazar-profile-options');
 
     // Theme Support Options
-    register_setting('nazar-theme-support', 'post_formats', 'nazar_post_formats_callback');
+    register_setting('nazar-theme-support', 'post_formats');
+    register_setting('nazar-theme-support', 'custom_header');
+    register_setting('nazar-theme-support', 'custom_background');
 
     add_settings_section('nazar-theme-options', 'Theme Options', 'nazar_theme_options', 'nazar_theme_support_options');
 
     add_settings_field('post-formats', 'Post Formats', 'nazar_post_formats', 'nazar_theme_support_options', 'nazar-theme-options');
+    add_settings_field('custom-header', 'Custom Header', 'nazar_custom_header', 'nazar_theme_support_options', 'nazar-theme-options');
+    add_settings_field('custom-background', 'Custom Background', 'nazar_custom_background', 'nazar_theme_support_options', 'nazar-theme-options');
 }
 
 // Display custom fields
@@ -70,7 +74,11 @@ function nazar_profile_description()
 function nazar_profile_picture()
 {
     $profilePicture = esc_attr(get_option('profile_picture'));
-    echo '<input type="button" id="upload-media" class="button button-secondary" value="Upload Profile Picture" /><input type="hidden" id="profile_picture" name="profile_picture" value="'. $profilePicture .'"/>';
+    if (empty($profilePicture)) {
+        echo '<input type="button" id="upload-media" class="button button-secondary" value="Upload Profile Picture" /><input type="hidden" id="profile_picture" name="profile_picture" value="'. $profilePicture .'"/>';
+    } else {
+        echo '<input type="button" id="upload-media" class="button button-secondary" value="Replace Profile Picture" /><input type="hidden" id="profile_picture" name="profile_picture" value="'. $profilePicture .'"/> <input type="button" id="remove-media" class="btn btn-sm btn-danger" value="Remove" />';
+    }
 }
 function nazar_profile_twitter()
 {
@@ -115,10 +123,10 @@ function nazar_profile_settings_page()
 <div class="nazar-settings wrap">
   <h1>Nazar Profile Settings</h1>
   <?php settings_errors(); ?>
-  <form action="options.php" method="post">
+  <form class="nazar-general-form" action="options.php" method="post">
     <?php settings_fields('nazar-settings-group', 'first-name'); ?>
     <?php do_settings_sections('nazar_theme_general_settings'); ?>
-    <?php submit_button(); ?>
+    <?php submit_button('Save Changes', 'primary', 'btnSubmit'); ?>
   </form>
 </div>
 <div class="nazar-review">
@@ -134,11 +142,6 @@ function nazar_profile_settings_page()
 }
 
 // Theme Support Page
-function nazar_post_formats_callback($input)
-{
-    return $input;
-}
-
 function nazar_post_formats()
 {
     $options = get_option('post_formats');
@@ -149,6 +152,20 @@ function nazar_post_formats()
         $output.= '<label><input type="checkbox" id="'.$format.'" name="post_formats['.$format.']" value="1" '.$checked.'/> '.$format.'</label><br/>';
     }
     echo $output;
+}
+function nazar_custom_header()
+{
+    $option = get_option('custom_header');
+    $checked = (@$option == 1 ? 'checked' : '');
+    $output = '<label><input type="checkbox" id="custom_header" name="custom_header" value="1" '.$checked.'/> Activate the Custom Header</label><br/>';
+    echo $output;
+}
+function nazar_custom_background()
+{
+  $option = get_option('custom_background');
+  $checked = (@$option == 1 ? 'checked' : '');
+  $output = '<label><input type="checkbox" id="custom_background" name="custom_background" value="1" '.$checked.'/> Activate the Custom Background</label><br/>';
+  echo $output;
 }
 function nazar_theme_options()
 {

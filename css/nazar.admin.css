@@ -109,3 +109,7 @@
 .linkedin-square:hover, .linkedin-square:active {
     color: #065680;
 }
+
+.btn:hover {
+    cursor: pointer;
+}

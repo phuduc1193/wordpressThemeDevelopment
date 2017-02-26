@@ -15,12 +15,23 @@ jQuery(document).ready(function() {
             multiple: false
         });
 
-        mediaUploader.on('select', function () {
-          attachment = mediaUploader.state().get('selection').first().toJSON();
-          jQuery('#profile_picture').val(attachment.url).trigger('change');
+        mediaUploader.on('select', function() {
+            attachment = mediaUploader.state().get('selection').first().toJSON();
+            jQuery('#profile_picture').val(attachment.url).trigger('change');
         });
 
         mediaUploader.open();
+    });
+
+    jQuery('#remove-media').on('click', function(e) {
+        e.preventDefault();
+        var confirmation = confirm("Are you sure you want to remove your Profile picture?");
+        if (confirmation == true) {
+            jQuery('#profile_picture').val('').trigger('change');
+            jQuery('.nazar-general-form').submit();
+        } else {
+            console.log("No balls");
+        }
     });
 
     // Binding to preview
