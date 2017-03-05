@@ -91,6 +91,8 @@ html, body {
             -o-transform: translateY(0);
             transform: translateY(0);
             opacity: 1; }
+        .nav-container .navbar-nazar ul li.open ul.dropdown-menu {
+          display: block; }
         .nav-container .navbar-nazar ul li a, .nav-container .navbar-nazar ul li a:visited {
           text-transform: uppercase;
           color: white;
@@ -131,5 +133,22 @@ html, body {
             -ms-transform: translateY(10px);
             -o-transform: translateY(10px);
             transform: translateY(10px); }
+        .nav-container .navbar-nazar ul li:hover ul.dropdown-menu {
+          display: block; }
+        .nav-container .navbar-nazar ul li ul.dropdown-menu {
+          border: 0;
+          border-radius: 0;
+          background: rgba(0, 0, 0, 0.75); }
+          .nav-container .navbar-nazar ul li ul.dropdown-menu li {
+            display: block; }
+            .nav-container .navbar-nazar ul li ul.dropdown-menu li a:hover, .nav-container .navbar-nazar ul li ul.dropdown-menu li a:focus, .nav-container .navbar-nazar ul li ul.dropdown-menu li a:visited:hover, .nav-container .navbar-nazar ul li ul.dropdown-menu li a:visited:focus {
+              background: rgba(0, 0, 0, 0.25);
+              color: white; }
+              .nav-container .navbar-nazar ul li ul.dropdown-menu li a:hover:after, .nav-container .navbar-nazar ul li ul.dropdown-menu li a:focus:after, .nav-container .navbar-nazar ul li ul.dropdown-menu li a:visited:hover:after, .nav-container .navbar-nazar ul li ul.dropdown-menu li a:visited:focus:after {
+                opacity: 0; }
+            .nav-container .navbar-nazar ul li ul.dropdown-menu li.active {
+              background: rgba(0, 0, 0, 0.25); }
+              .nav-container .navbar-nazar ul li ul.dropdown-menu li.active a:after {
+                opacity: 0; }
 
 /*# sourceMappingURL=nazar.css.map */
