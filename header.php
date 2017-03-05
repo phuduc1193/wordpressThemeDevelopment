@@ -20,13 +20,14 @@
               <h2 class="description"><?php bloginfo('description'); ?></h2>
             </div><!-- /.table-cell -->
           </div><!-- /.header-content -->
-          <div class="nav-container container">
+          <div class="nav-container">
             <nav class="navbar navbar-default navbar-nazar">
               <?php
               wp_nav_menu(array(
                 'theme_location'  =>   'main',
                 'container'       =>    false,
-                'menu_class'      =>   'nav navbar-nav'
+                'menu_class'      =>   'nav navbar-nav',
+                'walker'          =>    new Nazar_Walker_Nav_Primary()
               ));
               ?>
             </nav>

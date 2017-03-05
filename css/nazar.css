@@ -1,3 +1,4 @@
+/* Mixins */
 html, body {
   width: 100%;
   height: 100%;
@@ -27,26 +28,108 @@ html, body {
   display: table;
   width: 100%;
   height: 100%; }
-
-.table-cell {
-  display: table-cell;
-  width: 100%;
-  height: 100%;
-  vertical-align: middle; }
+  .table .table-cell {
+    display: table-cell;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle; }
 
 .nav-container {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0; }
+  right: 0;
+  bottom: -1.5em;
+  left: 0; }
   .nav-container .navbar-nazar {
-    background-color: transparent;
-    border: none; }
-
-.navbar-default .navbar-nav > li > a {
-  font-size: 1.3em;
-  color: #ddd; }
-  .navbar-default .navbar-nav > li > a:hover {
-    color: white; }
+    text-align: center;
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1); }
+    .nav-container .navbar-nazar ul {
+      float: none; }
+      .nav-container .navbar-nazar ul li {
+        display: inline-block;
+        float: none; }
+        .nav-container .navbar-nazar ul li.active a {
+          opacity: 1;
+          background-color: transparent; }
+          .nav-container .navbar-nazar ul li.active a:hover {
+            background-color: transparent; }
+            .nav-container .navbar-nazar ul li.active a:hover:after {
+              -webkit-transform: translateY(2px);
+              -moz-transform: translateY(2px);
+              -ms-transform: translateY(2px);
+              -o-transform: translateY(2px);
+              transform: translateY(2px);
+              opacity: 0.9;
+              left: 10px;
+              right: 10px; }
+          .nav-container .navbar-nazar ul li.active a:after {
+            -webkit-transform: translateY(0);
+            -moz-transform: translateY(0);
+            -ms-transform: translateY(0);
+            -o-transform: translateY(0);
+            transform: translateY(0);
+            opacity: 1; }
+        .nav-container .navbar-nazar ul li.open a {
+          opacity: 1;
+          background-color: transparent; }
+          .nav-container .navbar-nazar ul li.open a:hover {
+            background-color: transparent; }
+            .nav-container .navbar-nazar ul li.open a:hover:after {
+              -webkit-transform: translateY(2px);
+              -moz-transform: translateY(2px);
+              -ms-transform: translateY(2px);
+              -o-transform: translateY(2px);
+              transform: translateY(2px);
+              opacity: 0.9;
+              left: 10px;
+              right: 10px; }
+          .nav-container .navbar-nazar ul li.open a:after {
+            -webkit-transform: translateY(0);
+            -moz-transform: translateY(0);
+            -ms-transform: translateY(0);
+            -o-transform: translateY(0);
+            transform: translateY(0);
+            opacity: 1; }
+        .nav-container .navbar-nazar ul li a, .nav-container .navbar-nazar ul li a:visited {
+          text-transform: uppercase;
+          color: white;
+          opacity: 0.7;
+          font-size: 1.3em;
+          -webkit-transition: opacity 0.3s ease;
+          -moz-transition: opacity 0.3s ease;
+          -ms-transition: opacity 0.3s ease;
+          -o-transition: opacity 0.3s ease;
+          transition: opacity 0.3s ease; }
+          .nav-container .navbar-nazar ul li a:active, .nav-container .navbar-nazar ul li a:hover, .nav-container .navbar-nazar ul li a:visited:active, .nav-container .navbar-nazar ul li a:visited:hover {
+            color: white;
+            opacity: 1; }
+            .nav-container .navbar-nazar ul li a:active:after, .nav-container .navbar-nazar ul li a:hover:after, .nav-container .navbar-nazar ul li a:visited:active:after, .nav-container .navbar-nazar ul li a:visited:hover:after {
+              opacity: 1;
+              -webkit-transform: translateY(0px);
+              -moz-transform: translateY(0px);
+              -ms-transform: translateY(0px);
+              -o-transform: translateY(0px);
+              transform: translateY(0px); }
+          .nav-container .navbar-nazar ul li a:after, .nav-container .navbar-nazar ul li a:visited:after {
+            content: '';
+            position: absolute;
+            display: block;
+            left: 15px;
+            right: 15px;
+            bottom: 12px;
+            height: 2px;
+            background: white;
+            opacity: 0;
+            -webkit-transition: all 0.3s ease;
+            -moz-transition: all 0.3s ease;
+            -ms-transition: all 0.3s ease;
+            -o-transition: all 0.3s ease;
+            transition: all 0.3s ease;
+            -webkit-transform: translateY(10px);
+            -moz-transform: translateY(10px);
+            -ms-transform: translateY(10px);
+            -o-transform: translateY(10px);
+            transform: translateY(10px); }
 
 /*# sourceMappingURL=nazar.css.map */

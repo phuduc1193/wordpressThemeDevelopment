@@ -1,73 +1,48 @@
 $lightbg: rgb(255, 248, 242);
 
-html, body {
-    width: 100%;
-    height: 100%;
+/* Mixins */
+@mixin animate($attr, $time) { -webkit-transition: $attr $time ease; -moz-transition: $attr $time ease; -ms-transition: $attr $time ease; -o-transition: $attr $time ease; transition: $attr $time ease; }
+@mixin transform($val) { -webkit-transform: $val; -moz-transform: $val; -ms-transform: $val; -o-transform: $val; transform: $val; }
 
-    background: $lightbg;
+html, body { width: 100%; height: 100%; background: $lightbg; }
+.title { color: #ff6161; font-family: 'Permanent Marker', cursive; font-size: 3.5em; }
+.description { color: #5a341f; font-family: 'Lato', sans-serif; }
+.header-container { position: relative; display: block; width: 100%; max-width: 100%; height: 350px;
+  background-repeat: no-repeat; background-attachment: fixed; background-position: center center; background-size: cover;
 }
 
-.title {
-    color: #ff6161;
-
-    font-family: 'Permanent Marker', cursive;
-    font-size: 3.5em;
+.table { display: table; width: 100%; height: 100%;
+  .table-cell { display: table-cell; width: 100%; height: 100%; vertical-align: middle; }
 }
 
-.description {
-    color: #5a341f;
+.nav-container { position: absolute; right: 0; bottom: -1.5em; left: 0;
+  .navbar-nazar { text-align: center; border: none; border-top: 1px solid rgba(white, 0.2); background-color: rgba(white, 0.1);
+    ul { float: none;
+      li { display: inline-block; float: none;
+        &.active {
+    			a { opacity: 1; background-color: transparent;
+            &:hover { background-color: transparent;
+              &:after { @include transform( translateY(2px) ); opacity: 0.9; left: 10px; right: 10px; }
+            }
+            &:after { @include transform(translateY(0)); opacity: 1; }
+    			}
+    		}
+        &.open {
+    			a { opacity: 1; background-color: transparent;
+            &:hover { background-color: transparent;
+              &:after { @include transform( translateY(2px) ); opacity: 0.9; left: 10px; right: 10px; }
+            }
+            &:after { @include transform(translateY(0)); opacity: 1; }
+    			}
+    		}
 
-    font-family: 'Lato', sans-serif;
-}
-
-.header-container {
-    position: relative;
-
-    display: block;
-
-    width: 100%;
-    max-width: 100%;
-    height: 350px;
-
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center center;
-    background-size: cover;
-}
-
-.table {
-    display: table;
-
-    width: 100%;
-    height: 100%;
-}
-
-.table-cell {
-    display: table-cell;
-
-    width: 100%;
-    height: 100%;
-
-    vertical-align: middle;
-}
-
-.nav-container {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-
-    .navbar-nazar {
-        background-color: transparent;
-        border: none;
+        a, a:visited { text-transform: uppercase; color: white; opacity: 0.7; font-size: 1.3em; @include animate(opacity, 0.3s);
+          &:active, &:hover { color: white; opacity: 1;
+            &:after { opacity: 1; @include transform (translateY(0px));}
+          }
+          &:after { content: ''; position: absolute; display: block; left: 15px; right: 15px; bottom: 12px; height: 2px; background: white; opacity: 0; @include animate(all, 0.3s); @include transform (translateY(10px)); }
+        }
+      }
     }
-}
-
-.navbar-default .navbar-nav > li > a {
-    font-size: 1.3em;
-    color: #ddd;
-
-    &:hover {
-        color: white;
-    }
+  }
 }
