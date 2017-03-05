@@ -63,8 +63,8 @@ function nazar_custom_settings()
 function nazar_general_settings_page()
 {
     ?>
-<div class="wrap">
-  <h1>Nazar General Settings</h1>
+<div id="app" class="wrap">
+  <app-component>Loading app...</app-component>
 </div>
 <?php
 
@@ -74,23 +74,23 @@ function nazar_general_settings_page()
 function nazar_profile_settings_page()
 {
     ?>
-<div class="nazar-settings wrap">
-  <h1>Nazar Profile Settings</h1>
-  <?php settings_errors(); ?>
-  <form class="nazar-general-form" action="options.php" method="post">
-    <?php settings_fields('nazar-settings-group', 'first-name'); ?>
-    <?php do_settings_sections('nazar_theme_general_settings'); ?>
-    <?php submit_button('Save Changes', 'primary', 'btnSubmit'); ?>
-  </form>
-</div>
-<div class="nazar-review">
-  <div class="sidebar text-center">
-    <img id="profile-picture" src="<?php print esc_attr(get_option('profile_picture')); ?>" height="170px" width="170px">
-    <h2 id="profile-name"></h2>
-    <p id="profile-description"></p>
-    <div id="profile-socials"></div>
+  <div class="nazar-settings wrap">
+    <h1>Nazar Profile Settings</h1>
+    <?php settings_errors(); ?>
+    <form class="nazar-general-form" action="options.php" method="post">
+      <?php settings_fields('nazar-settings-group', 'first-name'); ?>
+      <?php do_settings_sections('nazar_theme_general_settings'); ?>
+      <?php submit_button('Save Changes', 'primary', 'btnSubmit'); ?>
+    </form>
   </div>
-</div>
+  <div class="nazar-review">
+    <div class="sidebar text-center">
+      <img id="profile-picture" src="" height="170px" width="170px">
+      <h2 id="profile-name"></h2>
+      <p id="profile-description"></p>
+      <div id="profile-socials"></div>
+    </div>
+  </div>
 <?php
 
 }

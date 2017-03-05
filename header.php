@@ -11,7 +11,7 @@
   <body <?php body_class(); ?>>
     <div class="container-fluid">
       <div class="row">
-        <div class="header-container text-center" style="background: url(<?php header_image(); ?>) no-repeat center center fixed;">
+        <div class="header-container text-center" style="background-image: url(<?php header_image(); ?>);">
           <div class="header-content table">
             <div class="table-cell">
               <h1 class="title"><?php bloginfo('name'); ?></h1>
