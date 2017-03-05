@@ -35,3 +35,10 @@ if (@$contact == 1) {
     add_action('add_meta_boxes', 'nazar_add_contact_meta_box');
     add_action('save_post', 'nazar_save_contact_email_data');
 }
+
+/* Nav Menu Options */
+function nazar_register_nav_menu()
+{
+    register_nav_menu('main', 'Main Navigation Menu');
+}
+add_action('after_setup_theme', 'nazar_register_nav_menu');

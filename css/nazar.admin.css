@@ -1,115 +1,83 @@
 .h2, h2 {
-    font-size: 1.2rem;
-}
+  font-size: 1.2rem; }
 
 .nazar-settings {
-    display: inline-block;
-    float: left;
-
-    margin-top: 10px;
-    margin-left: 10px;
-}
+  display: inline-block;
+  float: left;
+  margin-top: 10px;
+  margin-left: 10px; }
 
 .nazar-review {
+  display: inline-block;
+  float: right;
+  width: 35%;
+  height: 700px;
+  margin-top: 100px;
+  margin-right: 50px;
+  border: 2px solid #000;
+  background: #cacaca; }
+  .nazar-review .sidebar {
     display: inline-block;
     float: right;
-
-    width: 35%;
-    height: 700px;
-    margin-top: 100px;
-    margin-right: 50px;
-
-    border: 2px solid #000;
-    background: #cacaca;
-}
-
-.sidebar {
-    display: inline-block;
-    float: right;
-
     width: 400px;
     height: 100%;
     padding: 0 20px;
-
     color: white;
     border-left: 2px solid #5f5f5f;
     background: #444444;
-    box-shadow: -5px 0px 15px #8f8f8f;
-}
-
-#profile-picture {
+    box-shadow: -5px 0 15px #8f8f8f; }
+  .nazar-review #profile-picture {
     margin: 20px 0;
-    border-radius: 50%;
     border: 1px solid #666;
-}
+    border-radius: 50%; }
 
 .profile-social-icon {
-    color: white;
-}
+  color: white; }
+  .profile-social-icon:hover {
+    cursor: pointer; }
 
 .instagram-square {
-    display: inline-block;
-
-    width: 2.3em;
-    height: 2.3em;
-
-    text-align: center;
-    vertical-align: middle;
-
-    border-radius: 0.35em;
-    background: #d6249f;
-    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-}
-
-.instagram-square:hover, .instagram-square:active {
-    background: #9f1a76;
-    background: radial-gradient(circle at 30% 107%, #ccc475 0%, #cfc77b 5%, #c94133 45%, #a71e7d 60%, #1f49c2 90%);
-}
-
-.instagram-square .fa-instagram {
-    line-height: 38px;
-}
+  display: inline-block;
+  width: 2.3em;
+  height: 2.3em;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 0.35em;
+  background: #d6249f;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+  line-height: 1.2em; }
+  .instagram-square:active, .instagram-square:hover {
+    background: #aa1d7f;
+    background: radial-gradient(circle at 30% 107%, #fcef65 0%, #fcef65 5%, #fc2b17 45%, #aa1d7f 60%, #1343cd 90%); }
+  .instagram-square .fa-instagram {
+    line-height: 1.2em; }
 
 .twitter-square {
-    color: #55acee;
-}
-
-.twitter-square:hover, .twitter-square:active {
-    color: #4689bb;
-}
+  color: #55acee; }
+  .twitter-square:active, .twitter-square:hover {
+    color: #2795e9; }
 
 .facebook-square {
-    color: #3b5999;
-}
-
-.facebook-square:hover, .facebook-square:active {
-    color: #334979;
-}
+  color: #3b5999; }
+  .facebook-square:active, .facebook-square:hover {
+    color: #2d4474; }
 
 .google-square {
-    color: #dd4b39;
-}
-
-.google-square:hover, .google-square:active {
-    color: #b53f31;
-}
+  color: #dd4b39; }
+  .google-square:active, .google-square:hover {
+    color: #c23321; }
 
 .github-square {
-    color: #333333;
-}
-
-.github-square:hover, .github-square:active {
-    color: #212121;
-}
+  color: #333333; }
+  .github-square:active, .github-square:hover {
+    color: #1a1a1a; }
 
 .linkedin-square {
-    color: #0077b5;
-}
-
-.linkedin-square:hover, .linkedin-square:active {
-    color: #065680;
-}
+  color: #0077b5; }
+  .linkedin-square:active, .linkedin-square:hover {
+    color: #005582; }
 
 .btn:hover {
-    cursor: pointer;
-}
+  cursor: pointer; }
+
+/*# sourceMappingURL=nazar.admin.css.map */
