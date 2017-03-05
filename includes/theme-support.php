@@ -44,6 +44,7 @@ function nazar_register_nav_menu()
 add_action('after_setup_theme', 'nazar_register_nav_menu');
 
 /* Blog Post Format */
+add_theme_support( 'post-thumbnails' );
 function nazar_posted_meta()
 {
   $posted_on = human_time_diff(get_the_time('U'), current_time('timestamp')) . ' ago';
@@ -58,7 +59,7 @@ function nazar_posted_meta()
 			$i++;
     }
   } /* endif */
-  return '<span class="posted-on">'. $posted_on .'</span> | <span class="posted-in">'. $output_categories .'</span>';
+  return '<span class="posted-on">'. $posted_on .'</span> / <span class="posted-in">'. $output_categories .'</span>';
 }
 function nazar_posted_footer()
 {
@@ -69,9 +70,9 @@ function nazar_posted_footer()
 		} elseif ($comments_num > 1) {
 			$comments = $comments_num . __(' Comments');
 		} else { $comments = __('1 Comment'); }
-		$comments = '<a href="'. get_comments_link() .'">'. $comments .' <i class="fa fa-comment"></i></a>';
+		$comments = '<a class="comments-link" href="'. get_comments_link() .'">'. $comments .' <i class="fa fa-comment"></i></a>';
 	} else {
 		$comments = __('Comments are closed');
 	}
-  return '<div class="post-footer-container"><div class="row"><div class="col-sm-6">'. get_the_tag_list('<div class="tag-list"><i class="fa fa-tag"></i>', ' ', '</div>') .'</div><div class="col-sm-6">'. $comments .'</div></div></div>';
+  return '<div class="post-footer-container"><div class="row"><div class="col-sm-8">'. get_the_tag_list('<div class="tag-list"><i class="fa fa-tag"></i>', ' ', '</div>') .'</div><div class="col-sm-4 text-right">'. $comments .'</div></div></div>';
 }

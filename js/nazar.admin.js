@@ -1,4 +1,11 @@
 jQuery(document).ready(function() {
+    jQuery("#contextual-help-link").click(function() {
+        jQuery("#contextual-help-wrap").css("cssText", "display: block !important;");
+    });
+    jQuery("#show-settings-link").click(function() {
+        jQuery("#screen-options-wrap").css("cssText", "display: block !important;");
+    });
+
     var mediaUploader;
     jQuery('#upload-media').on('click', function(e) {
         e.preventDefault();
