@@ -12,6 +12,7 @@ function nazar_load_main_scripts()
     wp_enqueue_style('font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
     wp_enqueue_style('nazar-general', get_template_directory_uri().'/css/nazar.css');
     wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css?family=Lato|Permanent+Marker');
+    wp_enqueue_script('nazar-js', get_template_directory_uri().'/js/nazar.js', array('jquery'), '0.1', true);
 }
 add_action('wp_enqueue_scripts', 'nazar_load_main_scripts');
 

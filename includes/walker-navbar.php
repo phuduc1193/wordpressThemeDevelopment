@@ -1,12 +1,11 @@
 <?php
+
 /*
-
-@package sunsettheme
-
-	========================
-		WALKER NAV CLASS
-	========================
+  =============================================
+            		WALKER NAV CLASS
+  =============================================
 */
+
 class Nazar_Walker_Nav_Primary extends Walker_Nav_menu {
 
 	function start_lvl( &$output, $depth = 0, $args = array() ){ //ul

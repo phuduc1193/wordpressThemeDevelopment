@@ -2,7 +2,7 @@
 
 <div id="primary" class="content-area">
   <main id="main" class="main-section" role="main">
-    <div class="container">
+    <div class="container nazar-posts-container">
       <?php
         if (have_posts()):
           while (have_posts()): the_post();
@@ -13,5 +13,7 @@
     </div><!-- /.container -->
   </main>
 </div><!-- /#primary -->
+
+<div class="load-more text-center" data-page="1" data-url="<?php echo admin_url('admin-ajax.php'); ?>"><i class="fa fa-refresh fa-spin fa-fw"></i> Loading More Posts ...</div>
 
 <?php get_footer(); ?>
