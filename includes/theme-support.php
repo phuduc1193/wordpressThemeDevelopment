@@ -44,35 +44,72 @@ function nazar_register_nav_menu()
 add_action('after_setup_theme', 'nazar_register_nav_menu');
 
 /* Blog Post Format */
-add_theme_support( 'post-thumbnails' );
+add_theme_support('post-thumbnails');
 function nazar_posted_meta()
 {
-  $posted_on = human_time_diff(get_the_time('U'), current_time('timestamp')) . ' ago';
-  $categories = get_the_category();
-  $separator = ', ';
-  $output_categories = '';
-	$i = 1;
-  if (!empty($categories)) {
-    foreach ($categories as $category) {
-			if($i>1) { $output_categories .= $separator; }
-      $output_categories .= '<a href="'. esc_url(get_category_link($category->term_id)) .'" alt="'. esc_attr('View all posts in %s', $category->name) .'">'. esc_html($category->name) .'</a>';
-			$i++;
-    }
-  } /* endif */
+    $posted_on = human_time_diff(get_the_time('U'), current_time('timestamp')) . ' ago';
+    $categories = get_the_category();
+    $separator = ', ';
+    $output_categories = '';
+    $i = 1;
+    if (!empty($categories)) {
+        foreach ($categories as $category) {
+            if ($i>1) {
+                $output_categories .= $separator;
+            }
+            $output_categories .= '<a href="'. esc_url(get_category_link($category->term_id)) .'" alt="'. esc_attr('View all posts in %s', $category->name) .'">'. esc_html($category->name) .'</a>';
+            $i++;
+        }
+    } /* endif */
   return '<span class="posted-on">'. $posted_on .'</span> / <span class="posted-in">'. $output_categories .'</span>';
 }
 function nazar_posted_footer()
 {
-	$comments_num = get_comments_number();
-	if (comments_open()){
-		if ($comments_num == 0) {
-			 $comments = __('No comments');
-		} elseif ($comments_num > 1) {
-			$comments = $comments_num . __(' Comments');
-		} else { $comments = __('1 Comment'); }
-		$comments = '<a class="comments-link" href="'. get_comments_link() .'">'. $comments .' <i class="fa fa-comment"></i></a>';
-	} else {
-		$comments = __('Comments are closed');
-	}
-  return '<div class="post-footer-container"><div class="row"><div class="col-sm-8">'. get_the_tag_list('<div class="tag-list"><i class="fa fa-tag"></i>', ' ', '</div>') .'</div><div class="col-sm-4 text-right">'. $comments .'</div></div></div>';
+    $comments_num = get_comments_number();
+    if (comments_open()) {
+        if ($comments_num == 0) {
+            $comments = __('No comments');
+        } elseif ($comments_num > 1) {
+            $comments = $comments_num . __(' Comments');
+        } else {
+            $comments = __('1 Comment');
+        }
+        $comments = '<a class="comments-link" href="'. get_comments_link() .'">'. $comments .' <i class="fa fa-comment"></i></a>';
+    } else {
+        $comments = __('Comments are closed');
+    }
+    return '<div class="post-footer-container"><div class="row"><div class="col-sm-8">'. get_the_tag_list('<div class="tag-list"><i class="fa fa-tag"></i>', ' ', '</div>') .'</div><div class="col-sm-4 text-right">'. $comments .'</div></div></div>';
+}
+
+function nazar_get_attachment()
+{
+  $output = '';
+  if (has_post_thumbnail()):
+    $output = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID()));
+  else:
+    $attachments = get_posts(array(
+      'post_type' => 'attachment',
+      'posts_per_page' => 1,
+      'post_parent' => get_the_ID()
+    ));
+  if ($attachments):
+    foreach ($attachments as $attachment):
+      $output = wp_get_attachment_url($attachment->ID);
+    endforeach;
+  endif;
+  wp_reset_postdata();
+  endif;
+  return $output;
+}
+
+function nazar_get_embeded_media( $args = array())
+{
+  $content = do_shortcode(apply_filters('the_content', get_the_content()));
+  $embed = get_media_embedded_in_content($content, $args);
+  if (in_array('audio', $args)){
+    $output = str_replace('?visual=true', '?visual=false', $embed[0]);
+  } else {
+    $output = $embed[0];
+  }
+  return $output;
 }
