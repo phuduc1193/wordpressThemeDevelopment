@@ -1,13 +1,17 @@
 @import 'base/variables';
 
-.h2,h2 {
+.h2,
+h2 {
     font-size: 1.2rem;
+}
+
+label {
+    display: block;
 }
 
 .nazar-settings {
     display: inline-block;
     float: left;
-
     margin-top: 10px;
     margin-left: 10px;
 }
@@ -15,23 +19,19 @@
 .nazar-review {
     display: inline-block;
     float: right;
-
     width: 35%;
     height: 700px;
     margin-top: 100px;
     margin-right: 50px;
-
     border: 2px solid #000;
     background: #cacaca;
 
     .sidebar {
         display: inline-block;
         float: right;
-
         width: 400px;
         height: 100%;
         padding: 0 20px;
-
         color: white;
         border-left: 2px solid #5f5f5f;
         background: #444444;
@@ -40,7 +40,6 @@
 
     #profile-picture {
         margin: 20px 0;
-
         border: 1px solid #666;
         border-radius: 50%;
     }
@@ -56,20 +55,17 @@
 
 .instagram-square {
     display: inline-block;
-
     width: 2.3em;
     height: 2.3em;
-
     text-align: center;
     vertical-align: middle;
-
     border-radius: 0.35em;
     background: #d6249f;
     background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
-
     line-height: 1.2em;
 
-    &:active, &:hover {
+    &:active,
+    &:hover {
         background: darken(#d6249f, 10%);
         background: radial-gradient(circle at 30% 107%, darken(#fdf497, 10%) 0%, darken(#fdf497, 10%) 5%, darken(#fd5949, 10%) 45%, darken(#d6249f, 10%) 60%, darken(#285aeb, 10%) 90%);
     }
@@ -78,10 +74,12 @@
         line-height: 1.2em;
     }
 }
+
 .twitter-square {
     color: $twitter;
 
-    &:active, &:hover {
+    &:active,
+    &:hover {
         color: darken($twitter, 10%);
     }
 }
@@ -89,7 +87,8 @@
 .facebook-square {
     color: $facebook;
 
-    &:active, &:hover {
+    &:active,
+    &:hover {
         color: darken($facebook, 10%);
     }
 }
@@ -97,7 +96,8 @@
 .google-square {
     color: $google;
 
-    &:active, &:hover {
+    &:active,
+    &:hover {
         color: darken($google, 10%);
     }
 }
@@ -105,7 +105,8 @@
 .github-square {
     color: $github;
 
-    &:active, &:hover {
+    &:active,
+    &:hover {
         color: darken($github, 10%);
     }
 }
@@ -113,7 +114,8 @@
 .linkedin-square {
     color: $linkedin;
 
-    &:active, &:hover {
+    &:active,
+    &:hover {
         color: darken($linkedin, 10%);
     }
 }

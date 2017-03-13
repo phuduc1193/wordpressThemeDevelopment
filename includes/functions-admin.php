@@ -177,7 +177,7 @@ function nazar_theme_options()
 function nazar_post_formats()
 {
     $options = get_option('post_formats');
-    $formats = array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat');
+    $formats = array('gallery', 'image', 'video', 'audio');
     $output = '';
     foreach ($formats as $format) {
         $checked = (@$options[$format] == 1 ? 'checked' : '');

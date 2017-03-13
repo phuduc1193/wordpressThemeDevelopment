@@ -7,7 +7,7 @@
 */
 
 $options = get_option('post_formats');
-$formats = array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat');
+$formats = array('gallery', 'image', 'video', 'audio');
 $output = array();
 foreach ($formats as $format) {
     $output[] = (@$options[$format] == 1 ? $format : '');
@@ -81,21 +81,23 @@ function nazar_posted_footer()
     return '<div class="post-footer-container"><div class="row"><div class="col-sm-8">'. get_the_tag_list('<div class="tag-list"><i class="fa fa-tag"></i>', ' ', '</div>') .'</div><div class="col-sm-4 text-right">'. $comments .'</div></div></div>';
 }
 
-function nazar_get_attachment()
+function nazar_get_attachment( $num = 1 )
 {
   $output = '';
-  if (has_post_thumbnail()):
+  if (has_post_thumbnail() && $num == 1):
     $output = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID()));
   else:
     $attachments = get_posts(array(
       'post_type' => 'attachment',
-      'posts_per_page' => 1,
+      'posts_per_page' => $num,
       'post_parent' => get_the_ID()
     ));
-  if ($attachments):
+  if ($attachments && $num == 1):
     foreach ($attachments as $attachment):
       $output = wp_get_attachment_url($attachment->ID);
     endforeach;
+  elseif ($attachments && $num > 1):
+    $output = $attachments;
   endif;
   wp_reset_postdata();
   endif;
